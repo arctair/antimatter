@@ -32,6 +32,7 @@ done
 
 ssh root@$ipv4_dns_ptr -- 'cat > $HOME/.ssh/id_ed25519 && chmod 600 $HOME/.ssh/id_ed25519' <<< $remote_key
 ssh root@$ipv4_dns_ptr -- 'ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && git clone git@github.com:bingecraft-net/antimatter.git'
+ssh root@$ipv4_dns_ptr -- './antimatter/install.zsh && ./antimatter/start.zsh'
 
 # update sticky dns
 
