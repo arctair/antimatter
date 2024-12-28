@@ -30,10 +30,11 @@ while ! ssh root@$ipv4_dns_ptr -- echo hello world from $ipv4_dns_ptr ; do
   else ; break ; fi
 done
 
-ssh root@$ipv4_dns_ptr -- 'apt-get update && apt-get upgrade && apt-get install -y openjdk-17-jre-headless screen zsh'
 ssh root@$ipv4_dns_ptr -- 'cat > $HOME/.ssh/id_ed25519 && chmod 600 $HOME/.ssh/id_ed25519' <<< $remote_key
+ssh root@$ipv4_dns_ptr -- 'apt-get update && apt-get upgrade && apt-get install -y openjdk-17-jre-headless screen unzip zsh'
 ssh root@$ipv4_dns_ptr -- 'ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && rm -rf antimatter ; git clone git@github.com:bingecraft-net/antimatter.git'
-ssh root@$ipv4_dns_ptr -- 'rm -rf server && ./antimatter/install.zsh && screen -d -m -S minecraft ./antimatter/start.zsh'
+ssh root@$ipv4_dns_ptr -- 'rm -rf server && ./antimatter/install.zsh'
+ssh root@$ipv4_dns_ptr -- 'screen -d -m -S minecraft ./antimatter/start.zsh'
 
 # update sticky dns
 

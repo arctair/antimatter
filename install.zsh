@@ -15,3 +15,20 @@ if [ ! -f run.sh ] ; then
   java -jar $INSTALLER --installServer > /dev/null
 
 fi
+
+
+PACK_VERSION=0.10.5
+PACK=Monifactory-Beta.$PACK_VERSION-server.zip
+
+if [ ! -d $PACK.d ] ; then
+
+  echo installing monifactory
+
+  curl -sLO https://github.com/ThePansmith/Monifactory/releases/download/$PACK_VERSION/$PACK
+
+  unzip -d $PACK.d $PACK 'overrides/*'
+
+fi
+
+cp -r $PACK.d/overrides/* ./
+
