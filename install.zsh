@@ -17,7 +17,7 @@ if [ ! -f run.sh ] ; then
 fi
 
 
-PACK_VERSION=0.10.5
+PACK_VERSION=0.11.1
 PACK=Monifactory-Beta.$PACK_VERSION-server.zip
 
 if [ ! -d $PACK.d ] ; then
