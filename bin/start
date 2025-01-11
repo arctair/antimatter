@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+awk -F= '!a[$1]++' /overrides/server.properties server.properties > server.properties.tmp
+mv server.properties.tmp server.properties
+
+run() {
+  java -jar paper-1.21.4-84.jar
+}
+
+run && \
+  grep "You need to agree to the EULA in order to run the server." logs/latest.log > /dev/null && \
+  sed -i 's/eula=false/eula=true/' eula.txt && \
+  run
