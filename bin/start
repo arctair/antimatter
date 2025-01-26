@@ -4,7 +4,7 @@ awk -F= '!a[$1]++' /overrides/server.properties server.properties > server.prope
 mv server.properties.tmp server.properties
 
 run() {
-  java -jar paper-1.21.4-84.jar
+  ./run.sh
 }
 
 run && \

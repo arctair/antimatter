@@ -4,11 +4,12 @@ seed="$1"
 
 set -e
 
-docker build -t wavy-bacon .
-id=$(docker run -dip 25565:25565 wavy-bacon)
+podman build -t antimatter .
+id=$(podman run -dip 25565:25565 antimatter)
 echo $id
 if [ "$seed" != "" ]; then
-  docker cp $seed $id:/home/minecraft/backups/
-  docker exec $id tar xf /home/minecraft/backups/$seed
+  podman cp $seed $id:/home/minecraft/backups/
+  podman exec $id tar xf /home/minecraft/backups/$seed
 fi
-docker exec -d $id /bin/start
+podman exec -d $id start
+podman exec -d $id logtail
