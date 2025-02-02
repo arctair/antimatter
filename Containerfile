@@ -26,7 +26,7 @@ RUN export INSTALLER_VERSION=1.20.1-47.3.7 && \
     curl -svLO https://maven.minecraftforge.net/net/minecraftforge/forge/$INSTALLER_VERSION/$INSTALLER && \
     java -jar $INSTALLER --installServer
 
-RUN export PACK_VERSION=0.11.3 && \
+RUN export PACK_VERSION=0.11.5 && \
     export PACK=Monifactory-Beta.$PACK_VERSION-server.zip && \
     curl -sLO https://github.com/ThePansmith/Monifactory/releases/download/$PACK_VERSION/$PACK && \
     unzip -d $PACK.d $PACK 'overrides/*' && \
