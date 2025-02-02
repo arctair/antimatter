@@ -5,7 +5,7 @@ seed="$1"
 set -e
 
 podman build -t antimatter .
-id=$(podman run -dip 25565:25565 antimatter)
+id=$(podman run -dp 25565:25565 antimatter)
 echo $id
 if [ "$seed" != "" ]; then
   podman cp $seed $id:/home/minecraft/backups/
